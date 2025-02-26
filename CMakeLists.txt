@@ -14,10 +14,12 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
 add_executable(AlphaBetaGroupRPG
   main.cpp
-  player.h player.cpp
-  PlayerClass.h PlayerClass.cpp
-  item.h item.cpp
   Game.cpp
+  Player.h Player.cpp
+  PlayerClass.h PlayerClass.cpp
+  Item.h Item.cpp
+  NPC.h NPC.cpp
+  Enemy.cpp Enemy.h
 )
 target_link_libraries(AlphaBetaGroupRPG Qt${QT_VERSION_MAJOR}::Core)
 

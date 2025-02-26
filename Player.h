@@ -16,6 +16,7 @@ private:
     const PlayerClass& playerClass;
     int currHealth;
     vector<pair<Item*, int>> inventory;
+    int kills = 0;
 public:
     // Currhealth determined by class' max health
     Player(string name, const PlayerClass& playerClass):
@@ -33,6 +34,8 @@ public:
     PlayerClass getPlayerClass() { return playerClass; }
     int getCurrHealth() { return currHealth; }
     void setCurrHealth(int currHealth) { this->currHealth = currHealth; }
+    int getKills() { return kills; }
+    void setKills(int kills) { this->kills = kills; }
 };
 
 #endif // PLAYER_H

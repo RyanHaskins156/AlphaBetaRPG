@@ -7,6 +7,7 @@
 #include "Game.cpp"
 #include <QCoreApplication>
 
+// Current working product, user can create player, start game, and test some functionality
 int main()
 {
     // Create Game object

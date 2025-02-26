@@ -31,6 +31,7 @@ public:
         Item(name), damage(damage), dmgType(dmgType) {}
     // Override virtual use function
     virtual void use() {
+        // Modify to only use weapon in combat
         cout << "Using " << name << " for " << damage << " " << dmgType << " dmg." << endl;
     }
     // Getters
@@ -64,5 +65,6 @@ extern Weapon SPELL_TOME;
 extern Weapon SWORD;
 extern Consumable LESSER_HEALTH;
 extern Consumable GREATER_HEALTH;
+extern Consumable EPIC_HEALTH;
 
 #endif // ITEM_H

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include "Player.h"
+#include "NPC.h"
 
 using namespace std;
 
@@ -13,25 +14,64 @@ class Game {
 public:
 
     // UNFINISHED. NEEDS TO LOOP UNTIL GAME OVER (when currHealth = 0 or game is beat)
-    void gameLoop(Player player) {
+    // Will also need to take in a param representing current room
+    void gameLoop(Player& player) {
         string selection;
 
         while (true) {
-            cout << "What would you like to do next (q to quit):" << endl;
+            cout << "What would you like to do next:" << endl;
             cout << "1 - Open Map" << endl;
             cout << "2 - Open Inventory" << endl;
-            cout << "3 - COMBAT/TRADE" << endl;
-            cin >> selection;
+            cout << "3 - Move rooms" << endl;
 
+            // If user is in room with NPC, option to speak to NPC
+            // Uncommented for testing
+            cout << "4 - Talk to NPC" << endl;
+
+            // If user is in room with Enemy, Option to flee or fight replaces move rooms
+            // cout << "3 - Flee" << endl;
+            // cout << "4 - Fight" << endl;
+
+            cin >> selection;
             if (selection == "1") {
                 cout << "Opening Map..." << endl;
                 break;
             } else if (selection == "2") {
-                cout << "Opening Inventory..." << endl;
                 player.displayInventory();
                 break;
             } else if (selection == "3") {
-                cout << "Combat/Trading..." << endl;
+                cout << "Moving..." << endl;
+                break;
+
+            // If user is in room with NPC, option to speak to NPC
+            // Uncommented for testing
+            } else if (selection == "4") {
+                NPCDialog(QUEST_GIVER_1, player);
+                break;
+            } else {
+                cout << "Invalid selection! Try again!" << endl;
+            }
+        }
+    }
+
+    void NPCDialog(NPC& npc, Player& player) {
+        string selection;
+        while (true) {
+            cout << "Hello! What do you need?" << endl;
+            cout << "1 - Buy Item" << endl;
+            cout << "2 - Sell Item" << endl;
+            cout << "3 - View Quest" << endl;
+            cin >> selection;
+
+            if (selection == "1") {
+                cout << "Buying..." << endl;
+                break;
+            } else if (selection == "2") {
+                cout << "Selling..." << endl;
+                break;
+            } else if (selection == "3") {
+
+                npc.completeQuest(player);
                 break;
             } else {
                 cout << "Invalid selection! Try again!" << endl;
