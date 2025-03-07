@@ -8,7 +8,8 @@
 #include <string>
 using namespace std;
 
-class Enemy { // parent enemy class, each enemy will have name, health, damage, weapon, and ability
+ // parent enemy class, each enemy will have name, health, damage, weapon, and ability
+class Enemy {
 public:
     string name;
     int health;

@@ -11,7 +11,7 @@ using namespace std;
 
 class Player {
 private:
-    // Player member vars
+    // Player member variables
     string name;
     const PlayerClass& playerClass;
     int currHealth;

@@ -7,6 +7,7 @@
 #include <string>
 #include "Player.h"
 #include "NPC.h"
+#include "Map.h"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ public:
 
     // UNFINISHED. NEEDS TO LOOP UNTIL GAME OVER (when currHealth = 0 or game is beat)
     // Will also need to take in a param representing current room
-    void gameLoop(Player& player) {
+    void gameLoop(Player& player, Map& map) {
         string selection;
 
         while (true) {
@@ -25,8 +26,7 @@ public:
             cout << "3 - Move rooms" << endl;
 
             // If user is in room with NPC, option to speak to NPC
-            // Uncommented for testing
-            cout << "4 - Talk to NPC" << endl;
+            // cout << "4 - Talk to NPC" << endl;
 
             // If user is in room with Enemy, Option to flee or fight replaces move rooms
             // cout << "3 - Flee" << endl;
@@ -35,49 +35,18 @@ public:
             cin >> selection;
             if (selection == "1") {
                 cout << "Opening Map..." << endl;
-                break;
+                map.renderMap();
             } else if (selection == "2") {
                 player.displayInventory();
-                break;
             } else if (selection == "3") {
-                cout << "Moving..." << endl;
-                break;
-
-            // If user is in room with NPC, option to speak to NPC
-            // Uncommented for testing
-            } else if (selection == "4") {
-                NPCDialog(QUEST_GIVER_1, player);
-                break;
+                playerMvmt(map);
             } else {
                 cout << "Invalid selection! Try again!" << endl;
             }
         }
     }
 
-    void NPCDialog(NPC& npc, Player& player) {
-        string selection;
-        while (true) {
-            cout << "Hello! What do you need?" << endl;
-            cout << "1 - Buy Item" << endl;
-            cout << "2 - Sell Item" << endl;
-            cout << "3 - View Quest" << endl;
-            cin >> selection;
 
-            if (selection == "1") {
-                cout << "Buying..." << endl;
-                break;
-            } else if (selection == "2") {
-                cout << "Selling..." << endl;
-                break;
-            } else if (selection == "3") {
-
-                npc.completeQuest(player);
-                break;
-            } else {
-                cout << "Invalid selection! Try again!" << endl;
-            }
-        }
-    }
 
     // Runs when game starts, creates player with selected info
     Player startGame() {
@@ -115,6 +84,77 @@ public:
                 player.addItem(starterWeapon);
                 return player;
             // Handle invalid input
+            } else {
+                cout << "Invalid selection! Try again!" << endl;
+            }
+        }
+    }
+
+    void NPCDialog(NPC& npc, Player& player) {
+        string selection;
+        while (true) {
+            cout << "Hello! What do you need?" << endl;
+            cout << "1 - Buy Item" << endl;
+            cout << "2 - Sell Item" << endl;
+            cout << "3 - View Quest" << endl;
+            cin >> selection;
+
+            if (selection == "1") {
+                cout << "Buying..." << endl;
+                break;
+            } else if (selection == "2") {
+                cout << "Selling..." << endl;
+                break;
+            } else if (selection == "3") {
+
+                npc.completeQuest(player);
+                break;
+            } else {
+                cout << "Invalid selection! Try again!" << endl;
+            }
+        }
+    }
+
+    void playerMvmt(Map& map) {
+        string selection;
+        bool canMoveRight = map.checkValidDir('r');
+        bool canMoveLeft = map.checkValidDir('l');
+        bool canMoveUp = map.checkValidDir('u');
+        bool canMoveDown = map.checkValidDir('d');
+
+        while (true) {
+
+            cout << "Which Direction?" << endl;
+            if (canMoveRight) {
+                cout << "1 - Move Right" << endl;
+            }
+            if (canMoveLeft) {
+                cout << "2 - Move Left" << endl;
+            }
+            if (canMoveUp) {
+                cout << "3 - Move Up" << endl;
+            }
+            if (canMoveDown) {
+                cout << "4 - Move Down" << endl;
+            }
+
+            cin >> selection;
+            if (selection == "1" && canMoveRight) {
+                cout << "Moving Right..." << endl;
+                map.moveCharacter('r');
+                break;
+            } else if (selection == "2" && canMoveLeft) {
+                cout << "Moving Left..." << endl;
+                map.moveCharacter('l');
+                break;
+            } else if (selection == "3" && canMoveUp) {
+                cout << "Moving Up..." << endl;
+                map.moveCharacter('u');
+                break;
+            } else if (selection == "4" && canMoveDown) {
+                cout << "Moving Down..." << endl;
+                map.moveCharacter('d');
+                break;
             } else {
                 cout << "Invalid selection! Try again!" << endl;
             }

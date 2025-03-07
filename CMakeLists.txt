@@ -20,6 +20,7 @@ add_executable(AlphaBetaGroupRPG
   Item.h Item.cpp
   NPC.h NPC.cpp
   Enemy.cpp Enemy.h
+  Map.cpp Map.h
 )
 target_link_libraries(AlphaBetaGroupRPG Qt${QT_VERSION_MAJOR}::Core)
 

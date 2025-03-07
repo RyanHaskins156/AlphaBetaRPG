@@ -16,6 +16,7 @@ protected:
 public:
     Item(string name): name(name) {}
     virtual void use() = 0;
+    // Getters
     string getName() { return name; }
 };
 

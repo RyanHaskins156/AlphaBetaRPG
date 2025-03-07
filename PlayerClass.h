@@ -5,21 +5,14 @@
 #ifndef PLAYERCLASS_H
 #define PLAYERCLASS_H
 #include <string>
-#include <functional>
 
 using namespace std;
 
-// All classes have name, base HP and a special ability
 struct PlayerClass {
+    // PlayerClass member variables
     string className;
     int maxHp;
-    function<void()> specialAbility;
 };
-
-// Declare functions
-void warriorAbility();
-void mageAbility();
-void rogueAbility();
 
 // Declare viable classes
 extern const PlayerClass WARRIOR;

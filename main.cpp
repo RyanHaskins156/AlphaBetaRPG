@@ -4,6 +4,7 @@
  */
 
 #include "Player.h"
+#include "Map.h"
 #include "Game.cpp"
 #include <QCoreApplication>
 
@@ -16,7 +17,11 @@ int main()
     // Create player by calling startGame()
     Player player = game.startGame();
 
+    // Create map
+    Map map;
+
     // Starts game loop. Not yet finished
-    game.gameLoop(player);
+    game.gameLoop(player, map);
 
 }
+
