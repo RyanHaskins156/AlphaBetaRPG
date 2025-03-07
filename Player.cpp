@@ -45,9 +45,13 @@ void Player::useItem(int index) {
     // If valid selection, use item
     if (index >= 0 && index < inventory.size()) {
         Item* item = inventory[index].first;
-        item->use();
-        if (dynamic_cast<Weapon*>(item) == nullptr) {
+        if (typeid(*item) != typeid(Weapon)) {
+            Consumable* consumable = dynamic_cast<Consumable*>(item);
+            item->use();
+            currHealth = max(playerClass.maxHp, consumable->getHealAmt());
             removeItem(item);
+        } else {
+            cout << "Cannot use weapon outside of combat." << endl;
         }
     } else {
         cout << "Invalid index. No items used." << endl;

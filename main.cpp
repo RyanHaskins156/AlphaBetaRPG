@@ -17,6 +17,8 @@ int main()
     // Create player by calling startGame()
     Player player = game.startGame();
 
+    player.addItem(&LESSER_HEALTH);
+
     // Create map
     Map map;
 

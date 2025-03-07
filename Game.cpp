@@ -39,7 +39,7 @@ public:
             } else if (selection == "2") {
                 player.displayInventory();
             } else if (selection == "3") {
-                playerMvmt(map);
+                playerMvmt(map, player);
             } else {
                 cout << "Invalid selection! Try again!" << endl;
             }
@@ -106,7 +106,6 @@ public:
                 cout << "Selling..." << endl;
                 break;
             } else if (selection == "3") {
-
                 npc.completeQuest(player);
                 break;
             } else {
@@ -115,7 +114,7 @@ public:
         }
     }
 
-    void playerMvmt(Map& map) {
+    void playerMvmt(Map& map, Player& player) {
         string selection;
         bool canMoveRight = map.checkValidDir('r');
         bool canMoveLeft = map.checkValidDir('l');
@@ -141,19 +140,19 @@ public:
             cin >> selection;
             if (selection == "1" && canMoveRight) {
                 cout << "Moving Right..." << endl;
-                map.moveCharacter('r');
+                map.moveCharacter('r', player);
                 break;
             } else if (selection == "2" && canMoveLeft) {
                 cout << "Moving Left..." << endl;
-                map.moveCharacter('l');
+                map.moveCharacter('l', player);
                 break;
             } else if (selection == "3" && canMoveUp) {
                 cout << "Moving Up..." << endl;
-                map.moveCharacter('u');
+                map.moveCharacter('u', player);
                 break;
             } else if (selection == "4" && canMoveDown) {
                 cout << "Moving Down..." << endl;
-                map.moveCharacter('d');
+                map.moveCharacter('d', player);
                 break;
             } else {
                 cout << "Invalid selection! Try again!" << endl;

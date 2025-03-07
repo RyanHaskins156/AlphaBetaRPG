@@ -7,6 +7,8 @@
 #define MAP_H
 #include <vector>
 #include <iostream>
+#include "NPC.h"
+#include "Enemy.h"
 using namespace std;
 
 // Constant vars for map
@@ -16,12 +18,16 @@ static const char FOG = '-';
 static const char WALL = '#';
 static const char EMPTY = ' ';
 static const char PLAYER = '@';
+static const char MERCHANT = '$';
+static const char ENEMY = '!';
 
 class Map {
 private:
     // Map member variables
     vector<vector<char>> fullMap;
     vector<vector<char>> playerMap;
+    vector<NPC> npcs;
+    vector<Enemy> enemies;
     int playerX, playerY;
 
 public:
@@ -29,8 +35,9 @@ public:
     Map();
     void renderMap();
     bool checkValidDir(char dir) const;
-    void moveCharacter(char dir);
+    void moveCharacter(char dir, Player& player);
     void updatePlayerMap();
+    void checkInteractions(char dir, Player& player);
 
     // Getters
     int getPlayerX() { return playerX; }

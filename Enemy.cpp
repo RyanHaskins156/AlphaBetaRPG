@@ -5,8 +5,8 @@
 #include "Enemy.h"
 #include <iostream>
 
-Enemy::Enemy(string n, int h, int d, string w, string a)
-    : name(n), health(h), damage(d), weapon(w), ability(a) {
+Enemy::Enemy(string n, int h, int d, string w, string a, int x, int y)
+    : name(n), health(h), damage(d), weapon(w), ability(a), x(x), y(y) {
 }
 
 void Enemy::attack() {
@@ -18,8 +18,8 @@ void Enemy::specialAbility() {
 }
 
 // GhostKnight - Stats/Abilities
-GhostKnight::GhostKnight()
-    : Enemy("Ghost Knight", 100, 15, "soul sword", "Haunting Strike") {
+GhostKnight::GhostKnight(int x, int y)
+    : Enemy("Ghost Knight", 100, 15, "soul sword", "Haunting Strike", x, y) {
 }
 
 void GhostKnight::specialAbility() {
@@ -28,8 +28,8 @@ void GhostKnight::specialAbility() {
 }
 
 // Skeleton - Stats/Abilities
-Skeleton::Skeleton()
-    : Enemy("Skeleton", 75, 10, "bone sword", "Bone Cage") {
+Skeleton::Skeleton(int x, int y)
+    : Enemy("Skeleton", 75, 10, "bone sword", "Bone Cage", x, y) {
 }
 
 void Skeleton::specialAbility() {
@@ -38,8 +38,8 @@ void Skeleton::specialAbility() {
 }
 
 // Goblin - Stats/Abilities
-Goblin::Goblin()
-    : Enemy("Goblin", 60, 8, "dagger", "Poison Stab") {
+Goblin::Goblin(int x, int y)
+    : Enemy("Goblin", 60, 8, "dagger", "Poison Stab", x, y) {
 }
 
 void Goblin::specialAbility() {
@@ -47,8 +47,8 @@ void Goblin::specialAbility() {
     cout << name << " stabs the player with a poisoned dagger, dealing damage over time!\n" << endl;
 }
 // SwarmOfBats - Stats/Abilities
-SwarmOfBats::SwarmOfBats()
-    : Enemy("The Swarm of Bats", 50, 10, "sharp fangs", "Sonic Screech") {
+SwarmOfBats::SwarmOfBats(int x, int y)
+    : Enemy("The Swarm of Bats", 50, 10, "sharp fangs", "Sonic Screech", x, y) {
 }
 
 void SwarmOfBats::specialAbility() {
@@ -57,8 +57,8 @@ void SwarmOfBats::specialAbility() {
 }
 
 // DarkMage - Stats/Abilities
-DarkMage::DarkMage()
-    : Enemy("Dark Mage", 90, 12, "staff", "Shadow Bolt") {
+DarkMage::DarkMage(int x, int y)
+    : Enemy("Dark Mage", 90, 12, "staff", "Shadow Bolt", x, y) {
 }
 
 
@@ -68,8 +68,8 @@ void DarkMage::specialAbility() {
 }
 
 // Instantiate predefined bosses
-GhostKnight GHOSTKNIGHT;
-Skeleton SKELETON;
-Goblin GOBLIN;
-SwarmOfBats SWARMOFBATS;
-DarkMage DARKMAGE;
+// GhostKnight GHOSTKNIGHT;
+// Skeleton SKELETON;
+Goblin GOBLIN(4,3);
+// SwarmOfBats SWARMOFBATS;
+// DarkMage DARKMAGE;
