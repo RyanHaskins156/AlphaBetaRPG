@@ -67,9 +67,8 @@ void DarkMage::specialAbility() {
     cout << name << " casts a powerful shadow bolt that drastically drains the player's health over time!\n" << endl;
 }
 
-// Instantiate predefined bosses
-// GhostKnight GHOSTKNIGHT;
-// Skeleton SKELETON;
-Goblin GOBLIN(4,3);
-// SwarmOfBats SWARMOFBATS;
-// DarkMage DARKMAGE;
+GhostKnight GHOSTKNIGHT(0, 0);
+Skeleton SKELETON(1, 1);
+Goblin GOBLIN(4, 3);
+SwarmOfBats SWARMOFBATS(2, 2);
+DarkMage DARKMAGE(3, 3);
